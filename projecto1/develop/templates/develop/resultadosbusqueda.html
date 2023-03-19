@@ -1,0 +1,14 @@
+<p>Estamos buscando el: {{titulo}}</p>
+
+{% if libros %}
+
+<ul>
+{% for libro in libros %}
+    <li> {{libro.titulo}} </li>
+    <li> {{libro.precio}} </li>
+
+{%endfor%}
+
+</ul>
+
+{%endif%}

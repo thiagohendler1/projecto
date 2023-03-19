@@ -48,3 +48,18 @@ def libros_comprar(request):
             data["form"] = formulario
     
     return render(request, 'develop/BuyForm.html', data)
+
+def buscarLibro(request):
+    return render(request, 'develop/ListaLibrosBuy.html')
+
+def buscar(request):
+    if request.GET['titulo']:
+        titulo = request.GET['titulo']
+        precio = Libro_buy.objects.filter(titulo__icontains=titulo)
+        
+        return render(request, "develop/resultadosbusqueda.html", {"titulo": titulo, "precio": precio})
+    
+    else:
+        respuesta = "No enviaste datos"
+        
+    return HttpResponse(respuesta)
